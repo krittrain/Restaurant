@@ -44,8 +44,10 @@ function App() {
           <Route path="/create">
             <CreateRestaurant />
           </Route>
-          <Route path="/update">
-        <UpdateRestaurant />
+          
+       
+        <Route path="/update/:id" render={(props) => <UpdateRestaurant {...props} />}>
+
           </Route>
           <Route path="/">
             <Home />

@@ -23,7 +23,20 @@ export default class RestaurantList extends React.Component {
         })
     })
   }
-
+  delete(id){
+    fetch('http://localhost:3000/restaurants/'+id,
+    {
+        method: 'delete',
+        headers: {'Content-Type':'application/json'},
+        
+       })
+    .then((res)=>{
+        res.json().then((data)=>{
+            console.warn("api result",data)
+           
+        })
+    })
+  }
  
 
   render() {
@@ -41,6 +54,8 @@ export default class RestaurantList extends React.Component {
                         
                         <li>
                         <Link to={"/details/"+item.id}>{item.name}</Link>
+                        <Link to={"/update/"+item.id}>edit</Link>
+                        <button onClick = {()=>{this.delete(item.id)}}>Delete</button>
                         </li>
                         
                             )
